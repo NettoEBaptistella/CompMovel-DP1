@@ -1,12 +1,23 @@
 package pt.ulosofona.cm.kotlin.challenge.models
 
-class Bicicleta(identificador: String) : Veiculo(identificador, x = 0, y = 0) {
+import pt.ulusofona.cm.kotlin.challenge.exceptions.AlterarPosicaoException
+import java.text.SimpleDateFormat
+import kotlin.jvm.Throws
+
+class Bicicleta(identificador: String) : Veiculo(identificador) {
 
     override fun requerCarta() : Boolean {
         return false
     }
 
     override fun toString(): String {
-        return "Bicicleta | $identificador | $dataDeAquisicao | Posicao | x:$x | y:$y"
+        val formatter = SimpleDateFormat("dd-MM-yyyy")
+        val dtAqs = formatter.format(dataDeAquisicao)
+        return "Bicicleta | $identificador | $dtAqs | Posicao | x:${posicao.x} | y:${posicao.y}"
+    }
+
+    @Throws(AlterarPosicaoException::class)
+    override fun moverPara(x: Int, y: Int) {
+        posicao.alterarPosicaoPara(x, y)
     }
 }
