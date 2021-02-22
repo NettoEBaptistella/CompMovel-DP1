@@ -1,29 +1,30 @@
-package pt.ulosofona.cm.kotlin.challenge.models
+package pt.ulusofona.cm.kotlin.challenge.models
 
-import pt.ulosofona.cm.kotlin.challenge.interfaces.Movimentavel
 import pt.ulusofona.cm.kotlin.challenge.exceptions.AlterarPosicaoException
 import pt.ulusofona.cm.kotlin.challenge.exceptions.MenorDeIdadeException
 import pt.ulusofona.cm.kotlin.challenge.exceptions.PessoaSemCartaException
 import pt.ulusofona.cm.kotlin.challenge.exceptions.VeiculoNaoEncontradoException
+import pt.ulusofona.cm.kotlin.challenge.interfaces.Movimentavel
 import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.temporal.ChronoUnit
 import java.util.*
-import kotlin.jvm.Throws
+
 
 data class Pessoa(val nome: String, private val dataDeNascimento: Date) : Movimentavel {
 
     var carta: Carta? = null
-    val veiculos = arrayListOf<Veiculo>()
+    var veiculos:ArrayList<Veiculo> = ArrayList()
     var posicao: Posicao
 
     init {
         posicao = Posicao(0,0)
+        veiculos = ArrayList()
     }
 
     fun comprarVeiculo(veiculo: Veiculo) {
-        veiculo.atuaalizaData()
+        veiculo.atualizaData()
         veiculos.add(veiculo)
     }
 
@@ -50,10 +51,10 @@ data class Pessoa(val nome: String, private val dataDeNascimento: Date) : Movime
         carro.motor.desligar()
     }
 
-    @Throws(AlterarPosicaoException::class)
+    @Throws(AlterarPosicaoException::class, PessoaSemCartaException::class)
     fun moverVeiculoPara(identificador: String, x: Int, y: Int) {
         for (veiculo in veiculos) {
-            if (veiculo.identificador.equals(identificador)) {
+            if (veiculo.identificador.equals(identificador) ) {
                 if (veiculo.requerCarta() && !temCarta()) {
                     throw PessoaSemCartaException("$nome não tem carta para conduzir o veículo indicado")
                 }

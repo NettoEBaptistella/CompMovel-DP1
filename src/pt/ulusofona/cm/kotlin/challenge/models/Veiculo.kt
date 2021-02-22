@@ -1,9 +1,9 @@
-package pt.ulosofona.cm.kotlin.challenge.models
+package pt.ulusofona.cm.kotlin.challenge.models
 
-import pt.ulosofona.cm.kotlin.challenge.interfaces.Movimentavel
+import pt.ulusofona.cm.kotlin.challenge.interfaces.Movimentavel
 import java.util.*
 
-abstract class Veiculo(val identificador: String) : Movimentavel {
+open abstract class Veiculo(var identificador: String) : Movimentavel {
 
     var posicao: Posicao
     var dataDeAquisicao: Date
@@ -13,13 +13,9 @@ abstract class Veiculo(val identificador: String) : Movimentavel {
         this.dataDeAquisicao = Date()
     }
 
-    fun dataDeAquisicao(date: Date) {
-        this.dataDeAquisicao = date
-    }
-
     abstract fun requerCarta(): Boolean
 
-    fun atuaalizaData() {
+    fun atualizaData() {
         this.dataDeAquisicao = Date()
     }
 

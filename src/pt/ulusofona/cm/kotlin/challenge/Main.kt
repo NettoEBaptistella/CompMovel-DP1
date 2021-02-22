@@ -1,8 +1,6 @@
-package pt.ulosofona.cm.kotlin.challenge
+package pt.ulusofona.cm.kotlin.challenge
 
-import pt.ulosofona.cm.kotlin.challenge.models.Bicicleta
-import pt.ulosofona.cm.kotlin.challenge.models.Pessoa
-import pt.ulosofona.cm.kotlin.challenge.models.Veiculo
+import pt.ulusofona.cm.kotlin.challenge.models.Pessoa
 import java.util.*
 
 

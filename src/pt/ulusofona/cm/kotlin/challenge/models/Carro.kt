@@ -1,12 +1,11 @@
-package pt.ulosofona.cm.kotlin.challenge.models
+package pt.ulusofona.cm.kotlin.challenge.models
 
-import pt.ulosofona.cm.kotlin.challenge.interfaces.Ligavel
 import pt.ulusofona.cm.kotlin.challenge.exceptions.AlterarPosicaoException
+import pt.ulusofona.cm.kotlin.challenge.interfaces.Ligavel
 import java.text.SimpleDateFormat
-import kotlin.jvm.Throws
 
-class Carro(val motor:Motor, identificador: String) : Veiculo(identificador), Ligavel {
 
+class Carro(identificador: String, var motor: Motor) : Veiculo(identificador), Ligavel {
 
     override fun requerCarta() : Boolean {
         return true

@@ -1,11 +1,11 @@
-package pt.ulosofona.cm.kotlin.challenge.models
+package pt.ulusofona.cm.kotlin.challenge.models
 
-import pt.ulosofona.cm.kotlin.challenge.interfaces.Ligavel
 import pt.ulusofona.cm.kotlin.challenge.exceptions.VeiculoDesligadoException
 import pt.ulusofona.cm.kotlin.challenge.exceptions.VeiculoLigadoException
+import pt.ulusofona.cm.kotlin.challenge.interfaces.Ligavel
 
-class Motor(val cavalos:Int, val cilindradas:Int) : Ligavel {
-    var ligado: Boolean = false
+class Motor(var cavalos:Int, var cilindradas:Int) : Ligavel {
+    var ligado = false
 
     override fun toString(): String {
         return "Motor | $cavalos | $cilindradas"
