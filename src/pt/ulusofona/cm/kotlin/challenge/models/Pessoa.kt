@@ -39,8 +39,16 @@ data class Pessoa(val nome: String, private val dataDeNascimento: Date) : Movime
     }
 
     fun venderVeiculo(identificador: String, comprador: Pessoa) {
-        veiculos.remove(pesquisarVeiculo(identificador))
-        comprador.comprarVeiculo(pesquisarVeiculo(identificador))
+        /*veiculos.remove(pesquisarVeiculo(identificador))
+        comprador.comprarVeiculo(pesquisarVeiculo(identificador))*/
+        for (veiculo in veiculos) {
+            if (veiculo.identificador.equals(identificador) ) {
+                comprador.comprarVeiculo(veiculo)
+                veiculos.remove(veiculo)
+
+                break
+            }
+        }
     }
 
     fun ligarCarro(carro: Carro) {
